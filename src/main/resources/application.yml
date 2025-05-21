@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: PartService-svc
+  #数据源连接信息
+  datasource:
+    username: root
+    password: 233333
+    url: jdbc:mysql://localhost:3306/part-timeservice?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  data:
+    #Redis连接信息
+    redis:
+      port: 6379
+      host: localhost
+server:
+  port: 7321
+#配置日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
