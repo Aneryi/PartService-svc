@@ -7,7 +7,7 @@ drop table train_calendar;
 drop table `user`;
 -- 用户表
 CREATE TABLE `user` (
-                        `id` BIGINT PRIMARY KEY  COMMENT '主键ID',
+                        `id` BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '主键ID',
                         `username` VARCHAR(32) NOT NULL UNIQUE COMMENT '用户名',
                         `password` VARCHAR(128) NOT NULL COMMENT '加密密码',
                         `phone` VARCHAR(20) NOT NULL COMMENT '手机号',
@@ -19,7 +19,7 @@ CREATE TABLE `user` (
 
 -- 车次表
 CREATE TABLE `train` (
-                         `id` BIGINT PRIMARY KEY  COMMENT '主键ID',
+                         `id` BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '主键ID',
                          `train_no` VARCHAR(20) NOT NULL UNIQUE COMMENT '车次编号',
                          `start_station` VARCHAR(50) NOT NULL COMMENT '始发站',
                          `end_station` VARCHAR(50) NOT NULL COMMENT '终点站',
@@ -32,7 +32,7 @@ CREATE TABLE `train` (
 
 -- 座位表
 CREATE TABLE `seat` (
-                        `id` BIGINT PRIMARY KEY  COMMENT '主键ID',
+                        `id` BIGINT PRIMARY KEY AUTO_INCREMENT COMMENT '主键ID',
                         `train_id` BIGINT NOT NULL COMMENT '车次ID',
                         `seat_type` VARCHAR(10) NOT NULL COMMENT '座位类型',
                         `total_seats` INT NOT NULL COMMENT '总座位数'
@@ -58,7 +58,7 @@ CREATE TABLE `order` (
 
 -- 车厢表
 CREATE TABLE `carriage` (
-                            `id` BIGINT PRIMARY KEY ,
+                            `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
                             `train_id` BIGINT NOT NULL,
                             `carriage_number` VARCHAR(10) NOT NULL COMMENT '车厢号',
                             `seat_type` VARCHAR(10) NOT NULL COMMENT '座位类型',
@@ -71,7 +71,7 @@ CREATE TABLE `carriage` (
 
 -- 座位布局表
 CREATE TABLE `seat_layout` (
-                               `id` BIGINT PRIMARY KEY ,
+                               `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
                                `carriage_id` BIGINT NOT NULL,
                                `seat_index` INT NOT NULL COMMENT '全局座位索引',
                                `row_number` INT NOT NULL COMMENT '排号',
@@ -83,7 +83,7 @@ CREATE TABLE `seat_layout` (
 
 -- 车次日历表
 CREATE TABLE `train_calendar` (
-                                  `id` BIGINT PRIMARY KEY ,
+                                  `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
                                   `train_id` BIGINT NOT NULL COMMENT '关联车次ID',
                                   `run_date` DATE NOT NULL COMMENT '运行日期',
                                   `status` TINYINT DEFAULT 1 COMMENT '状态（1-可售 0-停运）',
